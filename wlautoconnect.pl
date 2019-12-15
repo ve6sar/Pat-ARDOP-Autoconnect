@@ -11,7 +11,8 @@
 #
 # October 15, 2019 Update fixed distance calculation bug when muliple bands to be used
 #
-
+#
+# December 15, 2019 Added output to log file for each station that is tried
 
 use strict;
 use warnings;
@@ -30,10 +31,10 @@ my @bands = (20,30,40,80); #Define all the bands we want data files for
 my @day = (20,30,40); #Define our day bands
 my @night = (40,80); #Define our night bands
 my @stations;
-my %location = ("lat" => "56", "long" => "-117");
+my %location = ("lat" => "56", "long" => "-117"); #Our station's Latitude and Longitude
 my $dist = 250; #Starting distance in miles
 my $distLast = 0;
-my $max = 2000;
+my $max = 2000; #Max Distance to try
 
 open(my $log, ">>", $logFile)
 	or die "Can't open > $logFile: $!";
@@ -155,6 +156,7 @@ print $log localtime()." *************************\r\n";
        if ($line[2] =~ /\d+/){  
          if ($line[2] > $last && $line[2] < $distance) {
            print "Station = $line[0] Distance = $line[2] miles\r\n";
+	   print $log $localtime()."Station = $line[0] Distance = $line[2] miles\r\n";
            print "Connection parameters: $line[10]\r\n";
 	   my $command = $pat." connect ".$line[10];
            system ($command);
