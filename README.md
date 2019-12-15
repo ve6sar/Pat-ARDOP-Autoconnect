@@ -1,2 +1,6 @@
 # Pat-ARDOP-Autoconnect
-A simple Perl script that works from the out in distance attempting to make an Winlink ARDOP connection via PAT
+This script works in conjunction with KM4ACK's getardop script 
+to make a list of ardop stations based on their distance from 
+the users station and work outwards trying to connect to RMS
+stations using the PAT CLI until it is able to make a connection 
+and pass any traffic.
