@@ -6,7 +6,6 @@ stations using the PAT CLI until it is able to make a connection
 and pass any traffic.
 
 Please edit the following sections to suit your installation:
-
 # Define our paths and file locations
 my $dataPath = $ENV{"HOME"} . '/Documents/ardop-list/';
 my $patPath = '/usr/bin/pat';
